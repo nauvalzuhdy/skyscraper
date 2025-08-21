@@ -55,12 +55,11 @@ const Header = () => {
                     <Link
                       to={item.href}
                       className={cn(
-                        "text-foreground dark:text-white hover:text-primary transition-colors font-medium flex items-center gap-1",
+                        "text-foreground dark:text-white hover:text-primary transition-colors font-medium",
                         isActivePath(item.href) && "text-primary"
                       )}
                     >
                       {item.label}
-                      <ChevronDown className="h-4 w-4" />
                     </Link>
                     <div className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       <div className="py-2">

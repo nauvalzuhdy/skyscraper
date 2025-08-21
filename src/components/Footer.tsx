@@ -34,7 +34,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">SKYSCRAPER</h3>
-            <p className="text-primary-foreground/80 dark:text-primary-foreground">
+            <p className="text-primary-foreground/80 dark:text-gray-300">
               Your trusted partner for discovering Turkey's magnificent heritage and natural wonders. 
               Creating unforgettable travel experiences since 2020.
             </p>
@@ -65,13 +65,13 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 dark:text-primary-foreground">Navigation</h4>
-            <ul className="space-y-2 dark:text-primary-foreground">
+            <h4 className="text-lg font-semibold mb-4 dark:text-gray-300">Navigation</h4>
+            <ul className="space-y-2">
               {navigationLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                    className="text-primary-foreground/80 hover:text-primary-foreground dark:text-gray-300 dark:hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -82,13 +82,13 @@ const Footer = () => {
 
           {/* Top Destinations */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Top Destinations</h4>
+            <h4 className="text-lg font-semibold mb-4 dark:text-gray-300">Top Destinations</h4>
             <ul className="space-y-2">
               {topDestinations.map((destination) => (
                 <li key={destination.label}>
                   <Link
                     to={destination.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                    className="text-primary-foreground/80 hover:text-primary-foreground dark:text-gray-300 dark:hover:text-white transition-colors"
                   >
                     {destination.label}
                   </Link>
@@ -99,12 +99,12 @@ const Footer = () => {
 
           {/* Contact Us */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+            <h4 className="text-lg font-semibold mb-4 dark:text-gray-300">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-primary-foreground/80" />
+                <MapPin className="h-5 w-5 mt-0.5 text-primary-foreground/80 dark:text-gray-300" />
                 <div>
-                  <p className="text-primary-foreground/80 text-sm">
+                  <p className="text-primary-foreground/80 dark:text-gray-300 text-sm">
                     Atatürk Mahallesi, Menderes Caddesi<br />
                     No: 15/A, Kuşadası<br />
                     Aydın, Turkey 09400
@@ -113,20 +113,20 @@ const Footer = () => {
               </div>
               
               <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-primary-foreground/80" />
+                <Phone className="h-5 w-5 text-primary-foreground/80 dark:text-gray-300" />
                 <a
                   href="tel:+902566141234"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground dark:text-gray-300 dark:hover:text-white transition-colors"
                 >
                   +90 (256) 614 12 34
                 </a>
               </div>
               
               <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary-foreground/80" />
+                <Mail className="h-5 w-5 text-primary-foreground/80 dark:text-gray-300" />
                 <a
                   href="mailto:info@skyscraper-travel.com"
-                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  className="text-primary-foreground/80 hover:text-primary-foreground dark:text-gray-300 dark:hover:text-white transition-colors"
                 >
                   info@skyscraper-travel.com
                 </a>
@@ -137,7 +137,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-          <p className="text-primary-foreground/80 text-sm">
+          <p className="text-primary-foreground/80 dark:text-gray-300 text-sm">
             © 2024 Skyscraper Travel. All rights reserved. | 
             <span className="ml-1">
               Licensed by Turkish Ministry of Tourism (License #12345)
