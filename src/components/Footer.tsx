@@ -105,9 +105,8 @@ const Footer = () => {
                 <MapPin className="h-5 w-5 mt-0.5 text-primary-foreground/80 dark:text-gray-300" />
                 <div>
                   <p className="text-primary-foreground/80 dark:text-gray-300 text-sm">
-                    Atatürk Mahallesi, Menderes Caddesi<br />
-                    No: 15/A, Kuşadası<br />
-                    Aydın, Turkey 09400
+                    PAMUKKALE MAH. TURGUT ÖZAL. CAD. NO: 4 A<br />
+                    PAMUKKALE/DENİZLİ
                   </p>
                 </div>
               </div>
