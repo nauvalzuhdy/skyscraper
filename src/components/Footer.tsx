@@ -34,7 +34,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">SKYSCRAPER</h3>
-            <p className="text-primary-foreground/80 dark:text-gray-300 mb-6">
+            <p className="text-primary-foreground/80 dark:text-primary-foreground">
               Your trusted partner for discovering Turkey's magnificent heritage and natural wonders. 
               Creating unforgettable travel experiences since 2020.
             </p>
