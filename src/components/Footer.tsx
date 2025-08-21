@@ -65,8 +65,8 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-semibold mb-4 dark:text-primary-foreground">Navigation</h4>
+            <ul className="space-y-2 dark:text-primary-foreground">
               {navigationLinks.map((link) => (
                 <li key={link.label}>
                   <Link
