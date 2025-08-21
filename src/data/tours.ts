@@ -162,7 +162,7 @@ export const tours: Tour[] = [
     slug: 'kusadasi-shore-excursion',
     title: 'Kusadasi Port Shore Excursion',
     location: 'Kusadasi',
-    images: ['/src/assets/ephesus-hero.jpg'],
+    images: ['/src/assets/shore-excursions-hero.jpg'],
     duration: '6 Hours',
     price: 75,
     currency: 'USD',
@@ -192,7 +192,7 @@ export const tours: Tour[] = [
     slug: 'bursa-ottoman-capital',
     title: 'Bursa Ottoman Capital Discovery',
     location: 'Bursa',
-    images: ['/src/assets/istanbul-hero.jpg'],
+    images: ['/src/assets/transfer-service-hero.jpg'],
     duration: '1 Day',
     price: 120,
     currency: 'USD',
@@ -216,6 +216,71 @@ export const tours: Tour[] = [
     createdAt: '2024-01-16',
     category: 'daily-tour',
     featured: false
+  },
+  {
+    id: '7',
+    slug: 'antalya-mediterranean-paradise',
+    title: 'Antalya Mediterranean Paradise',
+    location: 'Antalya',
+    images: ['/src/assets/antalya-hero.jpg'],
+    duration: '2 Days / 1 Night',
+    price: 180,
+    currency: 'USD',
+    shortDescription: 'Discover the pearl of the Mediterranean with ancient ruins, pristine beaches, and stunning waterfalls.',
+    longDescription: 'Experience the perfect blend of history and natural beauty in Antalya. From the ancient Roman harbor to the spectacular Düden Waterfalls, enjoy pristine Mediterranean beaches and explore the charming old town of Kaleiçi.',
+    highlights: [
+      'Kaleiçi Old Town exploration',
+      'Düden Waterfalls visit',
+      'Ancient Aspendos Theater',
+      'Mediterranean beach time',
+      'Traditional Turkish cuisine'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Antalya City & Waterfalls',
+        description: 'Explore Kaleiçi old town, visit Düden Waterfalls, and enjoy Mediterranean coastline.'
+      },
+      {
+        day: 2,
+        title: 'Aspendos & Beach',
+        description: 'Visit ancient Aspendos Theater and relax at pristine Mediterranean beaches.'
+      }
+    ],
+    availabilityDates: ['2024-03-25', '2024-04-08', '2024-04-22', '2024-05-06'],
+    createdAt: '2024-01-25',
+    category: 'multi-day',
+    featured: false
+  },
+  {
+    id: '8',
+    slug: 'bodrum-aegean-jewel',
+    title: 'Bodrum Aegean Jewel',
+    location: 'Bodrum',
+    images: ['/src/assets/bodrum-hero.jpg'],
+    duration: '1 Day',
+    price: 110,
+    currency: 'USD',
+    shortDescription: 'Explore the white-washed beauty of Bodrum with its ancient castle, vibrant marina, and crystal-clear waters.',
+    longDescription: 'Discover Bodrum, the jewel of the Aegean coast, where ancient history meets modern luxury. Visit the impressive Bodrum Castle, stroll through charming streets, and enjoy the sophisticated marina atmosphere.',
+    highlights: [
+      'Bodrum Castle & Museum',
+      'Ancient Mausoleum of Halicarnassus',
+      'Marina and harbor walk',
+      'Traditional Aegean architecture',
+      'Local market experience'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Bodrum Discovery',
+        description: 'Full day exploring Bodrum Castle, ancient mausoleum, marina area, and local markets.'
+      }
+    ],
+    availabilityDates: ['2024-03-28', '2024-04-11', '2024-04-25', '2024-05-09'],
+    createdAt: '2024-01-28',
+    category: 'daily-tour',
+    featured: false
   }
 ];
 
@@ -225,7 +290,9 @@ export const destinations = [
   'Istanbul',
   'Pamukkale',
   'Kusadasi',
-  'Bursa'
+  'Bursa',
+  'Antalya',
+  'Bodrum'
 ];
 
 export const tourCategories = [

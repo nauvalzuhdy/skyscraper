@@ -28,13 +28,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-primary dark:bg-gray-900 text-primary-foreground dark:text-gray-100">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">SKYSCRAPER</h3>
-            <p className="text-primary-foreground/80 mb-6">
+            <p className="text-primary-foreground/80 dark:text-gray-300 mb-6">
               Your trusted partner for discovering Turkey's magnificent heritage and natural wonders. 
               Creating unforgettable travel experiences since 2020.
             </p>
@@ -46,7 +46,7 @@ const Footer = () => {
                     key={social.label}
                     variant="outline"
                     size="icon"
-                    className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                    className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground hover:text-primary dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-300 dark:hover:text-gray-900"
                     asChild
                   >
                     <a

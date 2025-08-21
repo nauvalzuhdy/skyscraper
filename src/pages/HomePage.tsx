@@ -64,12 +64,24 @@ const HomePage = () => {
       price: 'From $450',
       description: 'Where Europe meets Asia in perfect harmony'
     },
-    {
-      name: 'Pamukkale',
-      image: '/src/assets/pamukkale-hero.jpg',
-      price: 'From $95',
-      description: 'White travertine terraces and thermal pools'
-    }
+      {
+        name: 'Pamukkale',
+        image: '/src/assets/pamukkale-hero.jpg',
+        price: 'From $95',
+        description: 'White travertine terraces and thermal pools'
+      },
+      {
+        name: 'Antalya',
+        image: '/src/assets/antalya-hero.jpg',
+        price: 'From $180',
+        description: 'Mediterranean paradise with ancient ruins'
+      },
+      {
+        name: 'Bodrum',
+        image: '/src/assets/bodrum-hero.jpg',
+        price: 'From $110',
+        description: 'Aegean jewel with pristine waters'
+      }
   ];
 
   return (
@@ -91,10 +103,10 @@ const HomePage = () => {
             {services.map((service, index) => {
               const Icon = service.icon;
               const backgroundColors = [
-                'bg-gradient-to-br from-travel-gold to-travel-gold/80',
-                'bg-gradient-to-br from-travel-ocean to-travel-ocean/80', 
-                'bg-gradient-to-br from-travel-sunset to-travel-sunset/80',
-                'bg-gradient-to-br from-travel-forest to-travel-forest/80'
+                'bg-gradient-to-br from-blue-500 to-blue-600',
+                'bg-gradient-to-br from-emerald-500 to-emerald-600', 
+                'bg-gradient-to-br from-purple-500 to-purple-600',
+                'bg-gradient-to-br from-orange-500 to-orange-600'
               ];
               return (
                 <div
@@ -167,7 +179,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
             {topDestinations.map((destination, index) => (
               <div
                 key={destination.name}
@@ -175,11 +187,14 @@ const HomePage = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() => navigate(`/tours?destination=${destination.name}`)}
               >
-                <div className="relative h-48">
+                 <div className="relative h-48">
                   <img
-                    src={destination.image}
+                    src={destination.image.replace('/src/assets/', '/src/assets/')}
                     alt={destination.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => {
+                      e.currentTarget.src = '/placeholder.svg';
+                    }}
                   />
                   <div className="image-overlay" />
                   <div className="absolute bottom-4 left-4 text-white">
