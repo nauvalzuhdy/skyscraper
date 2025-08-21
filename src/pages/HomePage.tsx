@@ -90,14 +90,20 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
+              const backgroundColors = [
+                'bg-gradient-to-br from-travel-gold to-travel-gold/80',
+                'bg-gradient-to-br from-travel-ocean to-travel-ocean/80', 
+                'bg-gradient-to-br from-travel-sunset to-travel-sunset/80',
+                'bg-gradient-to-br from-travel-forest to-travel-forest/80'
+              ];
               return (
                 <div
                   key={service.title}
                   className="travel-card text-center p-6 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
-                    <Icon className="h-8 w-8 text-primary-foreground" />
+                  <div className={`inline-flex items-center justify-center w-16 h-16 ${backgroundColors[index]} rounded-full mb-4`}>
+                    <Icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="card-title">{service.title}</h3>
                   <p className="text-muted-foreground text-sm mb-4">

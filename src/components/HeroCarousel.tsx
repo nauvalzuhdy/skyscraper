@@ -10,9 +10,9 @@ import { destinations } from '@/data/tours';
 
 // Import hero images
 import cappadociaHero from '@/assets/cappadocia-hero.jpg';
-import ephesusHero from '@/assets/ephesus-hero.jpg';
+import transferHero from '@/assets/transfer-service-hero.jpg';
 import istanbulHero from '@/assets/istanbul-hero.jpg';
-import pamukkaleHero from '@/assets/pamukkale-hero.jpg';
+import shoreExcursionsHero from '@/assets/shore-excursions-hero.jpg';
 
 interface HeroSlide {
   id: number;
@@ -32,10 +32,10 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    image: ephesusHero,
-    title: 'Ancient Ephesus',
-    subtitle: 'Walk through the best-preserved Roman city',
-    destination: 'Ephesus'
+    image: transferHero,
+    title: 'Premium Transfer Service',
+    subtitle: 'Comfortable and reliable transportation across Turkey',
+    destination: 'Transfer'
   },
   {
     id: 3,
@@ -46,10 +46,10 @@ const heroSlides: HeroSlide[] = [
   },
   {
     id: 4,
-    image: pamukkaleHero,
-    title: 'Cotton Castle',
-    subtitle: 'Marvel at the white travertine terraces',
-    destination: 'Pamukkale'
+    image: shoreExcursionsHero,
+    title: 'Shore Excursions',
+    subtitle: 'Perfect day trips for cruise passengers',
+    destination: 'Shore Excursions'
   }
 ];
 

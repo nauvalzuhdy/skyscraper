@@ -15,7 +15,7 @@ const AboutPage = () => {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Skyscraper Travel</h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Memberikan pengalaman perjalanan terbaik di Turki dengan layanan profesional dan pemandu berpengalaman
+            Providing exceptional travel experiences in Turkey with professional service and experienced guides
           </p>
         </div>
       </div>
@@ -25,34 +25,34 @@ const AboutPage = () => {
         <div className="max-w-4xl mx-auto">
           {/* Introduction */}
           <div className="prose prose-lg max-w-none mb-12">
-            <h2 className="section-title text-center mb-8">Tentang Perjalanan Kami</h2>
+            <h2 className="section-title text-center mb-8">About Our Journey</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
               <div>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Skyscraper Travel adalah penyedia jasa travel profesional yang berspesialisasi dalam 
-                  wisata Turki. Kami telah melayani ribuan wisatawan dari Indonesia dan seluruh dunia 
-                  untuk menjelajahi keindahan dan kekayaan sejarah Turki yang menakjubkan.
+                  Skyscraper Travel is a professional travel service provider specializing in 
+                  Turkish tourism. We have served thousands of tourists from Indonesia and around the world 
+                  to explore the stunning beauty and rich history of Turkey.
                 </p>
                 
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Dengan pengalaman lebih dari 15 tahun di industri pariwisata, kami memahami betul 
-                  kebutuhan dan ekspektasi wisatawan Indonesia. Tim kami yang berpengalaman dan berlisensi 
-                  resmi siap memberikan pelayanan terbaik untuk memastikan perjalanan Anda berkesan.
+                  With over 15 years of experience in the tourism industry, we understand 
+                  the needs and expectations of Indonesian travelers. Our experienced and officially licensed 
+                  team is ready to provide the best service to ensure your journey is memorable.
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed">
-                  Dari wisata sejarah di Istanbul hingga petualangan balon udara di Cappadocia, 
-                  kami menawarkan paket wisata yang dirancang khusus untuk memberikan pengalaman 
-                  autentik dan tak terlupakan di negeri yang menjembatani dua benua ini.
+                  From historical tours in Istanbul to hot air balloon adventures in Cappadocia, 
+                  we offer specially designed tour packages to provide authentic 
+                  and unforgettable experiences in this country that bridges two continents.
                 </p>
               </div>
               
               <div className="travel-card p-8 text-center bg-muted/30">
-                <h3 className="text-xl font-semibold mb-4">Visi Kami</h3>
+                <h3 className="text-xl font-semibold mb-4">Our Vision</h3>
                 <p className="text-muted-foreground italic">
-                  "Menjadi jembatan budaya antara Indonesia dan Turki melalui pengalaman wisata 
-                  yang berkesan dan pelayanan yang excellence."
+                  "To become a cultural bridge between Indonesia and Turkey through memorable travel 
+                  experiences and excellent service."
                 </p>
               </div>
             </div>
@@ -60,34 +60,34 @@ const AboutPage = () => {
 
           {/* Mission Statement */}
           <div className="travel-card p-8 mb-12 bg-primary text-primary-foreground">
-            <h2 className="text-2xl font-bold mb-6 text-center">Misi Kami</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">Our Mission</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-semibold mb-3">Pelayanan Prima</h3>
+                <h3 className="text-lg font-semibold mb-3">Premium Service</h3>
                 <p className="text-primary-foreground/90">
-                  Memberikan pelayanan wisata berkualitas tinggi dengan standar internasional, 
-                  didukung oleh tim yang profesional dan berpengalaman.
+                  Providing high-quality tourism services with international standards, 
+                  supported by a professional and experienced team.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-3">Pengalaman Autentik</h3>
+                <h3 className="text-lg font-semibold mb-3">Authentic Experience</h3>
                 <p className="text-primary-foreground/90">
-                  Menghadirkan pengalaman wisata yang autentik dan mendalam, memperkenalkan 
-                  kekayaan budaya, sejarah, dan keindahan alam Turki.
+                  Delivering authentic and immersive travel experiences, introducing 
+                  Turkey's rich culture, history, and natural beauty.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-3">Keamanan & Kenyamanan</h3>
+                <h3 className="text-lg font-semibold mb-3">Safety & Comfort</h3>
                 <p className="text-primary-foreground/90">
-                  Menjamin keamanan dan kenyamanan setiap wisatawan dengan sistem keamanan 
-                  yang ketat dan akomodasi yang berkualitas.
+                  Ensuring the safety and comfort of every traveler with strict security 
+                  systems and quality accommodations.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-3">Harga Kompetitif</h3>
+                <h3 className="text-lg font-semibold mb-3">Competitive Pricing</h3>
                 <p className="text-primary-foreground/90">
-                  Menawarkan paket wisata dengan harga yang kompetitif tanpa mengurangi 
-                  kualitas pelayanan dan pengalaman wisata.
+                  Offering competitively priced tour packages without compromising 
+                  service quality and travel experience.
                 </p>
               </div>
             </div>
@@ -115,17 +115,17 @@ const AboutPage = () => {
 
           {/* Why Choose Us */}
           <div className="text-center">
-            <h2 className="section-title mb-8">Mengapa Memilih Skyscraper Travel?</h2>
+            <h2 className="section-title mb-8">Why Choose Skyscraper Travel?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="travel-card p-6 text-center">
                 <div className="w-16 h-16 bg-travel-gold rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Berlisensi Resmi</h3>
+                <h3 className="text-lg font-semibold mb-3">Officially Licensed</h3>
                 <p className="text-muted-foreground text-sm">
-                  Berlisensi resmi dari Kementerian Pariwisata Turki dan terdaftar di 
-                  Asosiasi Agen Perjalanan Indonesia (ASITA).
+                  Officially licensed by the Turkish Ministry of Tourism and registered with 
+                  the Indonesian Travel Agent Association (ASITA).
                 </p>
               </div>
 
@@ -133,10 +133,10 @@ const AboutPage = () => {
                 <div className="w-16 h-16 bg-travel-ocean rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Tim Berpengalaman</h3>
+                <h3 className="text-lg font-semibold mb-3">Experienced Team</h3>
                 <p className="text-muted-foreground text-sm">
-                  Didukung oleh tim pemandu wisata lokal yang berpengalaman dan berbahasa Indonesia 
-                  untuk kenyamanan komunikasi Anda.
+                  Supported by experienced local tour guides who speak Indonesian 
+                  for your communication comfort.
                 </p>
               </div>
 
@@ -144,10 +144,10 @@ const AboutPage = () => {
                 <div className="w-16 h-16 bg-travel-sunset rounded-full flex items-center justify-center mx-auto mb-4">
                   <Heart className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Kepuasan Terjamin</h3>
+                <h3 className="text-lg font-semibold mb-3">Satisfaction Guaranteed</h3>
                 <p className="text-muted-foreground text-sm">
-                  Komitmen penuh terhadap kepuasan pelanggan dengan layanan 24/7 dan 
-                  jaminan kualitas terbaik di setiap perjalanan.
+                  Full commitment to customer satisfaction with 24/7 service and 
+                  guaranteed best quality on every journey.
                 </p>
               </div>
             </div>
