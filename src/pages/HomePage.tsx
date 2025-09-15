@@ -331,7 +331,7 @@ const HomePage = () => {
               className="overflow-x-auto scrollbar-hide"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              <div className="flex space-x-6 pb-4 px-16">
+              <div className="flex space-x-6 pb-4 pl-4 pr-16">
                 {tours.slice(0, 8).map((tour, index) => (
                   <div
                     key={tour.id}
@@ -384,7 +384,7 @@ const HomePage = () => {
               className="overflow-x-auto scrollbar-hide"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              <div className="flex space-x-4 md:space-x-6 pb-4 px-12 md:px-16">
+              <div className="flex space-x-4 md:space-x-6 pb-4 pl-4 pr-12 md:pr-16">
                 {topDestinations.slice(0, 8).map((destination, index) => (
                   <div
                     key={destination.name}
