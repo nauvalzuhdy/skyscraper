@@ -1,14 +1,28 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plane, Car, Ship, Headphones } from 'lucide-react';
+import { Plane, Car, Ship, Headphones, MapPin, Calendar, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar as CalendarComponent } from '@/components/ui/calendar';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { format } from 'date-fns';
+import { cn } from '@/lib/utils';
 import HeroCarousel from '@/components/HeroCarousel';
 import TourCard from '@/components/TourCard';
-import { tours } from '@/data/tours';
+import { tours, destinations } from '@/data/tours';
+
+// Import service images
+import serviceTours from '@/assets/service-tours.jpg';
+import serviceTransfer from '@/assets/service-transfer.jpg';
+import serviceShore from '@/assets/service-shore.jpg';
+import serviceBalloons from '@/assets/service-balloons.jpg';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const featuredTours = tours.filter(tour => tour.featured);
+  const [selectedDestination, setSelectedDestination] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<Date>();
 
   const handleSearch = (destination: string, date: Date | undefined) => {
     const params = new URLSearchParams();
@@ -18,29 +32,37 @@ const HomePage = () => {
     navigate(`/tours?${params.toString()}`);
   };
 
+  const handleSearchSubmit = () => {
+    handleSearch(selectedDestination, selectedDate);
+  };
+
   const services = [
     {
       icon: Plane,
       title: 'Tours',
       description: 'Discover Turkey\'s most spectacular destinations with our expertly guided tours.',
+      image: serviceTours,
       link: '/tours'
     },
     {
       icon: Car,
       title: 'Transfer',
       description: 'Comfortable and reliable airport transfers and transportation services.',
+      image: serviceTransfer,
       link: '/services#transfer'
     },
     {
       icon: Ship,
       title: 'Shore Excursions',
       description: 'Perfect excursions for cruise passengers visiting Turkish ports.',
+      image: serviceShore,
       link: '/tours?category=shore-excursion'
     },
     {
       icon: Headphones,
       title: 'Balloons',
       description: 'Unforgettable hot air balloon rides over Cappadocia\'s fairy chimneys.',
+      image: serviceBalloons,
       link: '/services#balloons'
     }
   ];
@@ -89,6 +111,99 @@ const HomePage = () => {
       {/* Hero Section */}
       <HeroCarousel onSearch={handleSearch} />
 
+      {/* Search Tours Section */}
+      <section className="py-16 bg-background/95 backdrop-blur-sm relative z-10 -mt-20">
+        <div className="container mx-auto px-4">
+          <div className="search-panel max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-center text-foreground mb-8">Find Your Perfect Tour</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              {/* Destination Selector */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  Destination
+                </label>
+                <Select value={selectedDestination} onValueChange={setSelectedDestination}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Where to?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {destinations.map((destination) => (
+                      <SelectItem key={destination} value={destination}>
+                        {destination}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Date Picker */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  Pick a Date
+                </label>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !selectedDate && "text-muted-foreground"
+                      )}
+                    >
+                      {selectedDate ? format(selectedDate, "PPP") : "Select date"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <CalendarComponent
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={setSelectedDate}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                      className="pointer-events-auto"
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+
+              {/* Guests */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
+                  Guests
+                </label>
+                <Select defaultValue="2">
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="How many?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1">1 Guest</SelectItem>
+                    <SelectItem value="2">2 Guests</SelectItem>
+                    <SelectItem value="3">3 Guests</SelectItem>
+                    <SelectItem value="4">4 Guests</SelectItem>
+                    <SelectItem value="5+">5+ Guests</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Search Button */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground opacity-0 hidden md:block">Search</label>
+                <Button 
+                  onClick={handleSearchSubmit}
+                  className="w-full h-10 bg-secondary hover:bg-secondary-hover text-secondary-foreground"
+                >
+                  <Search className="h-4 w-4 mr-2" />
+                  Search Tours
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Our Services Section */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -103,31 +218,44 @@ const HomePage = () => {
             {services.map((service, index) => {
               const Icon = service.icon;
               const backgroundColors = [
-                'bg-gradient-to-br from-blue-500 to-blue-600',
-                'bg-gradient-to-br from-emerald-500 to-emerald-600', 
-                'bg-gradient-to-br from-purple-500 to-purple-600',
-                'bg-gradient-to-br from-orange-500 to-orange-600'
+                'bg-gradient-to-br from-cyan-500 to-blue-600',
+                'bg-gradient-to-br from-emerald-500 to-teal-600', 
+                'bg-gradient-to-br from-violet-500 to-purple-600',
+                'bg-gradient-to-br from-amber-500 to-orange-600'
               ];
               return (
                 <div
                   key={service.title}
-                  className="travel-card text-center p-6 animate-fade-in"
+                  className="travel-card overflow-hidden group cursor-pointer animate-fade-in hover-scale"
                   style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => navigate(service.link)}
                 >
-                  <div className={`inline-flex items-center justify-center w-16 h-16 ${backgroundColors[index]} rounded-full mb-4`}>
-                    <Icon className="h-8 w-8 text-white" />
+                  {/* Service Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className={`absolute top-4 right-4 w-12 h-12 ${backgroundColors[index]} rounded-full flex items-center justify-center`}>
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
                   </div>
-                  <h3 className="card-title">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {service.description}
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => navigate(service.link)}
-                  >
-                    Learn More
-                  </Button>
+                  
+                  {/* Service Content */}
+                  <div className="p-6 text-center">
+                    <h3 className="card-title mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {service.description}
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="w-full group-hover:bg-secondary group-hover:text-secondary-foreground transition-colors"
+                    >
+                      Learn More
+                    </Button>
+                  </div>
                 </div>
               );
             })}
@@ -145,17 +273,20 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredTours.map((tour, index) => (
-              <div
-                key={tour.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <TourCard tour={tour} />
-              </div>
-            ))}
-          </div>
+          {/* Horizontal Scrollable Tours */}
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="flex space-x-6 pb-4">
+              {featuredTours.map((tour, index) => (
+                <div
+                  key={tour.id}
+                  className="flex-none w-80 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <TourCard tour={tour} />
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
 
           <div className="text-center mt-12">
             <Button
