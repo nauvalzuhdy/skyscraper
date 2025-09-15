@@ -171,4 +171,14 @@
   .image-overlay {
     @apply absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent;
   }
+  
+  /* Hide scrollbar for horizontal scroll */
+  .scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }

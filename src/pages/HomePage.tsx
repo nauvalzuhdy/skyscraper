@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plane, Car, Ship, Headphones, MapPin, Calendar, Search } from 'lucide-react';
+import { Plane, Car, Ship, Headphones, MapPin, Calendar, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -23,6 +23,8 @@ const HomePage = () => {
   const featuredTours = tours.filter(tour => tour.featured);
   const [selectedDestination, setSelectedDestination] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const toursScrollRef = useRef<HTMLDivElement>(null);
+  const destinationsScrollRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = (destination: string, date: Date | undefined) => {
     const params = new URLSearchParams();
@@ -34,6 +36,34 @@ const HomePage = () => {
 
   const handleSearchSubmit = () => {
     handleSearch(selectedDestination, selectedDate);
+  };
+
+  const scrollTours = (direction: 'left' | 'right') => {
+    if (toursScrollRef.current) {
+      const scrollAmount = 320; // Width of one card plus gap
+      const newScrollLeft = direction === 'left' 
+        ? toursScrollRef.current.scrollLeft - scrollAmount
+        : toursScrollRef.current.scrollLeft + scrollAmount;
+      
+      toursScrollRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollDestinations = (direction: 'left' | 'right') => {
+    if (destinationsScrollRef.current) {
+      const scrollAmount = 280; // Width of one destination card plus gap
+      const newScrollLeft = direction === 'left' 
+        ? destinationsScrollRef.current.scrollLeft - scrollAmount
+        : destinationsScrollRef.current.scrollLeft + scrollAmount;
+      
+      destinationsScrollRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const services = [
@@ -275,9 +305,33 @@ const HomePage = () => {
 
           {/* Horizontal Scrollable Tours with Navigation */}
           <div className="relative">
-            <ScrollArea className="w-full whitespace-nowrap">
-              <div className="flex space-x-6 pb-4 px-4">
-                {tours.map((tour, index) => (
+            {/* Navigation Buttons */}
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 border-border hover:bg-accent"
+              onClick={() => scrollTours('left')}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 border-border hover:bg-accent"
+              onClick={() => scrollTours('right')}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+
+            {/* Scrollable Content */}
+            <div 
+              ref={toursScrollRef}
+              className="overflow-x-auto scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <div className="flex space-x-6 pb-4 px-16">
+                {tours.slice(0, 8).map((tour, index) => (
                   <div
                     key={tour.id}
                     className="flex-none w-80 animate-fade-in"
@@ -287,7 +341,7 @@ const HomePage = () => {
                   </div>
                 ))}
               </div>
-            </ScrollArea>
+            </div>
           </div>
         </div>
       </section>
@@ -302,41 +356,70 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-            {topDestinations.map((destination, index) => (
-              <div
-                key={destination.name}
-                className="travel-card overflow-hidden group cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => navigate(`/tours?destination=${destination.name}`)}
-              >
-                 <div className="relative h-48">
-                  <img
-                    src={destination.image.replace('/src/assets/', '/src/assets/')}
-                    alt={destination.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.src = '/placeholder.svg';
-                    }}
-                  />
-                  <div className="image-overlay" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-bold mb-1">{destination.name}</h3>
-                    <p className="text-sm text-white/90">{destination.description}</p>
+          {/* Horizontal Scrollable Destinations with Navigation */}
+          <div className="relative">
+            {/* Navigation Buttons */}
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 border-border hover:bg-accent"
+              onClick={() => scrollDestinations('left')}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 border-border hover:bg-accent"
+              onClick={() => scrollDestinations('right')}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+
+            {/* Scrollable Content */}
+            <div 
+              ref={destinationsScrollRef}
+              className="overflow-x-auto scrollbar-hide"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <div className="flex space-x-6 pb-4 px-16">
+                {topDestinations.slice(0, 8).map((destination, index) => (
+                  <div
+                    key={destination.name}
+                    className="flex-none w-72 travel-card overflow-hidden group cursor-pointer animate-fade-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    onClick={() => navigate(`/tours?destination=${destination.name}`)}
+                  >
+                   <div className="relative h-48">
+                    <img
+                      src={destination.image.replace('/src/assets/', '/src/assets/')}
+                      alt={destination.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        e.currentTarget.src = '/placeholder.svg';
+                      }}
+                    />
+                    <div className="image-overlay" />
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h3 className="text-xl font-bold mb-1">{destination.name}</h3>
+                      <p className="text-sm text-white/90">{destination.description}</p>
+                    </div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
+                      <span className="text-sm font-semibold text-foreground">
+                        {destination.price}
+                      </span>
+                    </div>
                   </div>
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                    <span className="text-sm font-semibold text-foreground">
-                      {destination.price}
-                    </span>
+                  <div className="p-4">
+                    <Button variant="outline" className="w-full">
+                      Explore Now
+                    </Button>
                   </div>
-                </div>
-                <div className="p-4">
-                  <Button variant="outline" className="w-full">
-                    Explore Now
-                  </Button>
-                </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
