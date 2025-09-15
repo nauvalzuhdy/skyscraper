@@ -54,7 +54,8 @@ const HomePage = () => {
 
   const scrollDestinations = (direction: 'left' | 'right') => {
     if (destinationsScrollRef.current) {
-      const scrollAmount = 280; // Width of one destination card plus gap
+      const containerWidth = destinationsScrollRef.current.clientWidth;
+      const scrollAmount = containerWidth * 0.8; // Scroll by 80% of container width for better responsiveness
       const newScrollLeft = direction === 'left' 
         ? destinationsScrollRef.current.scrollLeft - scrollAmount
         : destinationsScrollRef.current.scrollLeft + scrollAmount;
@@ -383,15 +384,15 @@ const HomePage = () => {
               className="overflow-x-auto scrollbar-hide"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              <div className="flex space-x-6 pb-4 px-16">
+              <div className="flex space-x-4 md:space-x-6 pb-4 px-12 md:px-16">
                 {topDestinations.slice(0, 8).map((destination, index) => (
                   <div
                     key={destination.name}
-                    className="flex-none w-72 travel-card overflow-hidden group cursor-pointer animate-fade-in"
+                    className="flex-none w-64 sm:w-72 travel-card overflow-hidden group cursor-pointer animate-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}
                     onClick={() => navigate(`/tours?destination=${destination.name}`)}
                   >
-                   <div className="relative h-48">
+                   <div className="relative h-40 sm:h-48">
                     <img
                       src={destination.image.replace('/src/assets/', '/src/assets/')}
                       alt={destination.name}
@@ -401,18 +402,18 @@ const HomePage = () => {
                       }}
                     />
                     <div className="image-overlay" />
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-xl font-bold mb-1">{destination.name}</h3>
-                      <p className="text-sm text-white/90">{destination.description}</p>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <h3 className="text-lg sm:text-xl font-bold mb-1 line-clamp-1">{destination.name}</h3>
+                      <p className="text-xs sm:text-sm text-white/90 line-clamp-2">{destination.description}</p>
                     </div>
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
-                      <span className="text-sm font-semibold text-foreground">
+                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1">
+                      <span className="text-xs sm:text-sm font-semibold text-foreground">
                         {destination.price}
                       </span>
                     </div>
                   </div>
-                  <div className="p-4">
-                    <Button variant="outline" className="w-full">
+                  <div className="p-3 sm:p-4">
+                    <Button variant="outline" className="w-full text-sm">
                       Explore Now
                     </Button>
                   </div>
