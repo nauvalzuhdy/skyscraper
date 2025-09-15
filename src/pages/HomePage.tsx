@@ -273,29 +273,21 @@ const HomePage = () => {
             </p>
           </div>
 
-          {/* Horizontal Scrollable Tours */}
-          <ScrollArea className="w-full whitespace-nowrap">
-            <div className="flex space-x-6 pb-4">
-              {featuredTours.map((tour, index) => (
-                <div
-                  key={tour.id}
-                  className="flex-none w-80 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <TourCard tour={tour} />
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
-
-          <div className="text-center mt-12">
-            <Button
-              size="lg"
-              className="bg-secondary hover:bg-secondary-hover text-secondary-foreground"
-              onClick={() => navigate('/tours')}
-            >
-              View All Tours
-            </Button>
+          {/* Horizontal Scrollable Tours with Navigation */}
+          <div className="relative">
+            <ScrollArea className="w-full whitespace-nowrap">
+              <div className="flex space-x-6 pb-4 px-4">
+                {tours.map((tour, index) => (
+                  <div
+                    key={tour.id}
+                    className="flex-none w-80 animate-fade-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <TourCard tour={tour} />
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
           </div>
         </div>
       </section>
