@@ -69,20 +69,20 @@ const HeroCarousel = ({ onSearch }: HeroCarouselProps) => {
     
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    setIsAutoPlaying(false);
-  };
+  // const nextSlide = () => {
+  //   setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  //   setIsAutoPlaying(false);
+  // };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-    setIsAutoPlaying(false);
-  };
+  // const prevSlide = () => {
+  //   setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  //   setIsAutoPlaying(false);
+  // };
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -129,7 +129,7 @@ const HeroCarousel = ({ onSearch }: HeroCarouselProps) => {
       </div>
 
       {/* Navigation Arrows */}
-      <Button
+      {/* <Button
         variant="outline"
         size="icon"
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20"
@@ -145,7 +145,7 @@ const HeroCarousel = ({ onSearch }: HeroCarouselProps) => {
         onClick={nextSlide}
       >
         <ChevronRight className="h-6 w-6" />
-      </Button>
+      </Button> */}
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">

@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plane, Car, Ship, Headphones, MapPin, Calendar, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Calendar, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -69,28 +69,24 @@ const HomePage = () => {
 
   const services = [
     {
-      icon: Plane,
       title: 'Tours',
       description: 'Discover Turkey\'s most spectacular destinations with our expertly guided tours.',
       image: serviceTours,
       link: '/tours'
     },
     {
-      icon: Car,
       title: 'Transfer',
       description: 'Comfortable and reliable airport transfers and transportation services.',
       image: serviceTransfer,
       link: '/services#transfer'
     },
     {
-      icon: Ship,
       title: 'Shore Excursions',
       description: 'Perfect excursions for cruise passengers visiting Turkish ports.',
       image: serviceShore,
       link: '/tours?category=shore-excursion'
     },
     {
-      icon: Headphones,
       title: 'Balloons',
       description: 'Unforgettable hot air balloon rides over Cappadocia\'s fairy chimneys.',
       image: serviceBalloons,
@@ -247,13 +243,6 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => {
-              const Icon = service.icon;
-              const backgroundColors = [
-                'bg-gradient-to-br from-cyan-500 to-blue-600',
-                'bg-gradient-to-br from-emerald-500 to-teal-600', 
-                'bg-gradient-to-br from-violet-500 to-purple-600',
-                'bg-gradient-to-br from-amber-500 to-orange-600'
-              ];
               return (
                 <div
                   key={service.title}
@@ -269,9 +258,6 @@ const HomePage = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className={`absolute top-4 right-4 w-12 h-12 ${backgroundColors[index]} rounded-full flex items-center justify-center`}>
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
                   </div>
                   
                   {/* Service Content */}

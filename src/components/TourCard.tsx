@@ -13,7 +13,7 @@ const TourCard = ({ tour }: TourCardProps) => {
     const symbol = currency === 'USD' ? '$' : currency === 'EUR' ? '€' : '₺';
     return `${symbol}${price}`;
   };
-
+  
   return (
     <div className="travel-card group overflow-hidden">
       {/* Image */}
